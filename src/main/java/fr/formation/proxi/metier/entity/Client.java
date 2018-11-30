@@ -16,18 +16,24 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Client {
+	
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
 @Column
 	private Integer id;
+
 @Column
 	private String firstname;
+
 @Column
 	private String lastname;
+
 @Column
 	private String email;
+
 @Column
 	private String address;
+
 @OneToMany
 @JoinColumn(referencedColumnName="id")
 	private List<Account> accounts;
