@@ -95,4 +95,9 @@ public class AccountService {
 	public AccountDao getDao() {
 		return this.dao;
 	}
+
+	public Account create(Account account) {
+		AccountDao.getInstance().create(account);
+		return account;
+	}
 }

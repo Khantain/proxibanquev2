@@ -39,43 +39,48 @@
 	<!-- Header -->
 	<header class="masthead">
 		<div class="container">
-			<div class="intro-text" style="padding-top: 150px; padding-bottom: 200px;">
+			<div class="intro-text"
+				style="padding-top: 150px; padding-bottom: 200px;">
 				<div class="intro-lead-in">Bienvenue sur le système
 					d'information</div>
 				<div class="intro-heading text-uppercase">PROXIBANQUE</div>
 			</div>
 		</div>
 	</header>
-
+	
+	
 	<!-- Affichage des clients -->
 	<section id="clients-display">
-	<h1 class="page-title">Liste de vos clients</h1>
-	<div class="client-display">
-		<c:forEach var="client" items="${clients}">
-			<div class="client-container">
-				<div class="client-contain">
-					<p class="name"> ${client.firstname} ${client.lastname}</p> 
-					<p class="text"> ${client.email} </p> 
-					<p class="text"> ${client.address} </p>
+		<h1 class="page-title">Liste de vos clients</h1>
+	<a href="create.html">
+		<button class="button">Ajouter un client</button>
+	</a>
+		<div class="client-display">
+			<c:forEach var="client" items="${clients}">
+				<div class="client-container">
+					<div class="client-contain">
+						<p class="name">${client.firstname} ${client.lastname}</p>
+						<p class="text">${client.email}</p>
+						<p class="text">${client.address}</p>
 						<div class="button-container">
 							<div>
 								<a href="modify.html?id=${client.id}">
-									<button class = "button">Editer</button>
+									<button class="button">Editer</button>
 								</a>
 							</div>
 							<div>
 								<a href="account.html?id=${client.id}">
-									<button class = "button">Comptes</button>
+									<button class="button">Comptes</button>
 								</a>
 							</div>
 							<div>
 								<a href="transfer.html?id=${client.id}">
-									<button class = "button">Virement</button>
+									<button class="button">Virement</button>
 								</a>
 							</div>
 						</div>
+					</div>
 				</div>
-			</div>
 			</c:forEach>
 		</div>
 	</section>

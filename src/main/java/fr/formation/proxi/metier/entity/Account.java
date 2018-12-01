@@ -21,6 +21,10 @@ public class Account {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column
 	private Integer id;
+	
+	@Column
+	private Integer accounts_id;
+
 
 	/**
 	 * Identifiant meier, numero du compte sur 9 chiffres.
@@ -54,6 +58,10 @@ public class Account {
 	public Account(String number, Float balance, boolean savings) {
 		this(number, balance);
 		this.savings = savings;
+	}
+	public Account(String number, Float balance, boolean savings, Integer accounts_id) {
+		this(number, balance, savings);
+		this.accounts_id = accounts_id;
 	}
 	
 	public Account(Integer id, String number, Float balance, boolean savings) {
@@ -93,4 +101,11 @@ public class Account {
 		this.savings = savings;
 	}
 
+	public Integer getAccounts_id() {
+		return accounts_id;
+	}
+
+	public void setAccounts_id(Integer accounts_id) {
+		this.accounts_id = accounts_id;
+	}
 }

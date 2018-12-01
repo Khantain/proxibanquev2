@@ -16,6 +16,26 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>NewAccountServlet</servlet-name>
+		<servlet-class>fr.formation.proxi.presentation.NewAccountServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>NewAccountServlet</servlet-name>
+		<url-pattern>/addaccount.html</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CreateServlet</servlet-name>
+		<servlet-class>fr.formation.proxi.presentation.CreateServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CreateServlet</servlet-name>
+		<url-pattern>/create.html</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>TransferServlet</servlet-name>
 		<servlet-class>fr.formation.proxi.presentation.TransferServlet</servlet-class>
 	</servlet>

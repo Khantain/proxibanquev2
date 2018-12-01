@@ -43,6 +43,9 @@
 					<a href="transfer.html?id=${id}">
 						<button class="button">Faire un virement</button>
 					</a>
+					<a href="addaccount.html?id=${id}">
+						<button class="button">Ajouter un compte</button>
+					</a>
 				</div>
 			</div>
 			<div class="account-list">
