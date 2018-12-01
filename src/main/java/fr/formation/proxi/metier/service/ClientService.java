@@ -62,13 +62,12 @@ public class ClientService {
 			transferOK = false;
 			return transferOK;
 		} else {
-			Account compteCrediteActualise = new Account(compteCredite.getId(), compteCredite.getNumber(),
-					(compteCredite.getBalance() + value), compteCredite.isSavings());
-			this.daoAccount.update(compteCrediteActualise);
+			compteCredite.setBalance(compteCredite.getBalance() + value);
+			this.daoAccount.update(compteCredite);
 
-			Account compteDebiteActualise = new Account(compteDebite.getId(), compteDebite.getNumber(),
-					(compteDebite.getBalance() - value), compteDebite.isSavings());
-			this.daoAccount.update(compteDebiteActualise);
+			compteDebite.setBalance(compteDebite.getBalance() - value);
+			this.daoAccount.update(compteDebite);
+			
 			return transferOK;
 		}
 	}

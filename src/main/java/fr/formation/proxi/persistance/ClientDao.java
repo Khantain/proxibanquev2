@@ -16,9 +16,6 @@ public class ClientDao extends AbstractDao<Client> {
 
 	private static final ClientDao INSTANCE = new ClientDao();
 
-	public ClientDao() {
-	}
-	
 	public static ClientDao getInstance() {
 		return ClientDao.INSTANCE;
 	}
@@ -32,7 +29,7 @@ public class ClientDao extends AbstractDao<Client> {
 	@Override
 	public List<Client> readAll() {
 		List<Client> clients = new ArrayList<>();
-		clients.addAll(this.em.createQuery(SqlQueries.SELECT_ALL_CLIENTS, Client.class).getResultList());
+		clients.addAll(this.em.createQuery(JpqlQueries.SELECT_ALL_CLIENTS, Client.class).getResultList());
 		return clients;
 	}
 

@@ -65,7 +65,7 @@
 		</div>
 	</c:if>
 	<c:if test="${not empty accountAdded.id}">
-		<p>Ajout du nouveau compte à ${client.firstname} ${client.lastname}</p>
+		<p>Ajout du nouveau compte à ${clientUpdated.firstname} ${clientUpdated.lastname}</p>
 		<p>Compte numéro ${accountAdded.number}</p>
 		<p>Solde initial : ${accountAdded.balance}</p>
 		<p>Type de compte : ${account_Type}</p>

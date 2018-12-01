@@ -7,9 +7,10 @@ package fr.formation.proxi.persistance;
  * @author Adminl
  *
  */
-public class SqlQueries {
+public class JpqlQueries {
 	
 	public static final String SELECT_ALL_CLIENTS = "SELECT c FROM Client c";
 	public static final String SELECT_ALL_ACCOUNTS = "SELECT a FROM Account a";
+	public static final String SELECT_ALL_ACCOUNTS_FOR_ONE_CLIENT = "SELECT a FROM Account a WHERE accounts_id = %s";
 
 }

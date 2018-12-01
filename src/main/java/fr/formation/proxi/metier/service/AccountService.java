@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.formation.proxi.metier.entity.Account;
+import fr.formation.proxi.metier.entity.Client;
 import fr.formation.proxi.persistance.AccountDao;
 import fr.formation.proxi.persistance.ClientDao;
 
@@ -18,11 +19,9 @@ public class AccountService {
 
 	private static final AccountService INSTANCE = new AccountService();
 	private AccountDao dao;
-	private ClientDao daoClient;
 	
 	public AccountService() {
 		this.dao = AccountDao.getInstance();
-		this.daoClient = ClientDao.getInstance();
 	}
 
 	/**
@@ -34,22 +33,13 @@ public class AccountService {
 		return AccountService.INSTANCE;
 	}
 
-	/**
-	 * Recup�re la liste de tous les comptes associ�s � un client.
-	 * 
-	 * @param idClient L'id du client dont on veut les comptes.
-	 * @return La liste des comptes du client.
-	 */
+	
+
 	public List<Account> getAll(Integer idClient) {
-		List<Account> accounts = new ArrayList<>();
-		accounts = getAllAccountsForOneClient(idClient);
-
-		return accounts;
-
-	}
-
-	private List<Account> getAllAccountsForOneClient(Integer idClient) {
-		return this.daoClient.read(idClient).getAccounts();
+		Client client = ClientDao.getInstance().read(idClient);
+		List<Account> accountsOfTheClient = AccountDao.getInstance().readAllAccountsForOneClient(idClient);
+		client.setAccounts(accountsOfTheClient);
+		return client.getAccounts();
 	}
 
 	/**
@@ -62,7 +52,7 @@ public class AccountService {
 		List<Account> SavingAccounts = new ArrayList<>();
 
 		List<Account> accounts = new ArrayList<>();
-		accounts = getAllAccountsForOneClient(idClient);
+		accounts = getAll(idClient);
 
 		for (Account account : accounts) {
 			if (account.isSavings()) {
@@ -82,7 +72,7 @@ public class AccountService {
 		List<Account> CurrentAccounts = new ArrayList<>();
 
 		List<Account> accounts = new ArrayList<>();
-		accounts = getAllAccountsForOneClient(idClient);
+		accounts = getAll(idClient);
 
 		for (Account account : accounts) {
 			if (!account.isSavings()) {

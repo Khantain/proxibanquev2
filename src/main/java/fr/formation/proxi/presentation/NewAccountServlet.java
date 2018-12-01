@@ -42,8 +42,13 @@ public class NewAccountServlet extends HttpServlet{
 			account = new Account(number, balance, true, accounts_id);
 			req.setAttribute("account_Type", "épargne");
 		}
+
+		Client client = ClientService.getInstance().read(accounts_id);
+		client.getAccounts().add(account);
 		account = AccountService.getInstance().create(account);
 		
+		
+		req.setAttribute("clientUpdated", client);
 		req.setAttribute("accountAdded", account);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/addAccount.jsp").forward(req, resp);
 	}

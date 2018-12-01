@@ -33,15 +33,15 @@ public class AccountServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = Integer.parseInt(req.getParameter("id"));
+		Client client = ClientService.getInstance().read(id);
 		List<Account> currentAccounts= AccountService.getInstance().getAllCurrentAccounts(id);
 		List<Account> savingAccounts= AccountService.getInstance().getAllSavingAccounts(id);
-		Client client = ClientService.getInstance().read(id);
 		
 		req.setAttribute("currentAccounts",currentAccounts);
 		req.setAttribute("savingAccounts",savingAccounts);
 		req.setAttribute("id",id);
 		req.setAttribute("client",client);
-		logger.info("Comptes du client " + client.getLastname() + " " + client.getFirstname() + " chargés");
+		logger.info("Comptes du client " + client.getLastname() + " " + client.getFirstname() + " chargï¿½s");
 		
 		req.getServletContext().getRequestDispatcher("/WEB-INF/views/account.jsp").forward(req, resp);
 	}

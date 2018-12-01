@@ -16,8 +16,6 @@ public class AccountDao extends AbstractDao<Account> {
 
 	private static final AccountDao INSTANCE = new AccountDao();
 
-	public AccountDao() {
-	}
 	
 	public static AccountDao getInstance() {
 		return AccountDao.INSTANCE;
@@ -33,12 +31,16 @@ public class AccountDao extends AbstractDao<Account> {
 	@Override
 	public List<Account> readAll() {
 		List<Account> accounts = new ArrayList<>();
-		accounts.addAll(this.em.createQuery(SqlQueries.SELECT_ALL_ACCOUNTS, Account.class).getResultList());
+		accounts.addAll(this.em.createQuery(JpqlQueries.SELECT_ALL_ACCOUNTS, Account.class).getResultList());
 		return accounts;
 	}
 	
 	
-	
+	public List<Account> readAllAccountsForOneClient(Integer accounts_id){
+		List<Account> accounts = new ArrayList<>();
+		accounts.addAll(this.em.createQuery(String.format(JpqlQueries.SELECT_ALL_ACCOUNTS_FOR_ONE_CLIENT,accounts_id), Account.class).getResultList());
+		return accounts;
+	}
 	
 
 
